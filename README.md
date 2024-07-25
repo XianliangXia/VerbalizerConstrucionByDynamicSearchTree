@@ -14,6 +14,28 @@ bash download_text_classification.sh
 ~~~
 ## Download pre-trained language models
 - Our approach can be adapted to a variety of models and tasks. So choose and download you PLM first!
-- You can get the model for 
+- You can get the models from Transformers. An example code as follow.
+~~~
+from transformers import BertTokenizer, BertForMaskedLM, RobertaTokenizer, \
+    RobertaForMaskedLM, AutoModelForMaskedLM, AutoTokenizer
+def initialize_bertmodel():
+    model_id = 'bert-base-uncased'
+    bert = BertForMaskedLM.from_pretrained(model_id, local_files_only=True)
+
+    bert.eval()
+    tokenizer = BertTokenizer.from_pretrained(model_id)
+    global mask
+    mask = '[MASK]'
+    return bert, tokenizer
+
+
+def initialize_robertamodel():
+    model_id = 'roberta-large'
+    bert = RobertaForMaskedLM.from_pretrained(model_id, local_files_only=True)
+
+    bert.eval()
+    tokenizer = RobertaTokenizer.from_pretrained(model_id)
+    return bert, tokenizer
+~~~
 
 ## Run the code to construct a verbalizer
