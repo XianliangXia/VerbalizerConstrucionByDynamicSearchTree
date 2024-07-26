@@ -31,7 +31,7 @@ def initialize_robertamodel():
 ## Run the code to construct a verbalizer
 
 ### PDS
-- First, you need to find the positive dimensions (PDs), the code in the file positive dimensions selection.py.
+- First, you need to find the positive dimensions (PDs), the code in the file positive_dimensions_selection.py.
 - Note that you can run it in Jupyter Notebook to save time for loading models.
 - There you can give different k values until you get a satisfactory result.
   
@@ -47,7 +47,7 @@ meaning_dim = [7, 83, 94, 113, 170, 195, 289, 296, 347, 350, 351, 398, 401,
 ~~~~
 
 ### Use the verbalizer for tasks
-- When get the verbalizer, use it in KPT Integration.py
+- When get the verbalizer, use it in KPT_Integration.py
 - You can run it by run_classificaion.sh. Note that change the dir to the right path.
 ~~~~
 bash run_classificaion.sh
