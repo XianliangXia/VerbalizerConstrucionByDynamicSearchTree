@@ -18,16 +18,6 @@ bash download_text_classification.sh
 ~~~
 from transformers import BertTokenizer, BertForMaskedLM, RobertaTokenizer, \
     RobertaForMaskedLM, AutoModelForMaskedLM, AutoTokenizer
-def initialize_bertmodel():
-    model_id = 'bert-base-uncased'
-    bert = BertForMaskedLM.from_pretrained(model_id, local_files_only=True)
-
-    bert.eval()
-    tokenizer = BertTokenizer.from_pretrained(model_id)
-    global mask
-    mask = '[MASK]'
-    return bert, tokenizer
-
 
 def initialize_robertamodel():
     model_id = 'roberta-large'
@@ -39,3 +29,26 @@ def initialize_robertamodel():
 ~~~
 
 ## Run the code to construct a verbalizer
+
+### PDS
+- First, you need to find the positive dimensions (PDs), the code in the file positive dimensions selection.py.
+- Note that you can run it in Jupyter Notebook to save time for loading models.
+- There you can give different k values until you get a satisfactory result.
+  
+### Use DST to construct a verbalizer
+- When you get the PDs, use them in the next step.
+- They will be working on the rectified cosine similarity to measure the relationship between different words in a specified feature.
+- The code in the DST.py
+- put your PDs here.
+~~~~
+meaning_dim = [7, 83, 94, 113, 170, 195, 289, 296, 347, 350, 351, 398, 401,
+             447, 491, 527, 532, 554, 570, 621, 669, 674, 679, 705, 743, 768,
+             795, 827, 862, 906, 950, 952]
+~~~~
+
+### Use the verbalizer for tasks
+- When get the verbalizer, use it in KPT Integration.py
+- You can run it by run_classificaion.sh. Note that change the dir to the right path.
+~~~~
+bash run_classificaion.sh
+~~~~
